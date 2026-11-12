@@ -1,24 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="color-scheme: only light; background-color: #26362b;">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="color-scheme" content="only light" />
+  <meta name="supported-color-schemes" content="light" />
+  <meta name="theme-color" content="#364a3c" />
   <title>Wedding Invitation | Hari Priya &amp; Ram Nived</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     :root {
-      --crimson-dark: #420612;
-      --crimson: #6b0c1f;
-      --crimson-light: #8f142d;
-      --gold-light: #fff3c4;
-      --gold: #e5b84b;
-      --gold-deep: #b8831f;
-      --ivory: #fdf8ee;
-      --ivory-warm: #f6ead4;
-      --ink: #381018;
-      --ink-muted: #693640;
+      color-scheme: only light;
+      --sage-dark: #26362b;
+      --sage-deep: #364a3c;
+      --sage: #526b59;
+      --sage-soft: #dce5dd;
+      --blush-dark: #9e5864;
+      --blush: #c97f8b;
+      --blush-mid: #dfa2ac;
+      --blush-light: #f6dde1;
+      --blush-pale: #fdf5f6;
+      --ivory: #fcf9f4;
+      --champagne: #f5ece0;
+      --gold-light: #fff6da;
+      --gold: #cfa14a;
+      --gold-deep: #9c7225;
+      --ink: #2c382f;
+      --ink-muted: #5a665d;
     }
 
     * {
@@ -26,73 +36,73 @@
       margin: 0;
       padding: 0;
       -webkit-tap-highlight-color: transparent;
+      forced-color-adjust: none;
     }
 
     html, body {
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: #140206;
+      background-color: #26362b !important;
+      background: #26362b !important;
       font-family: 'Cormorant Garamond', Georgia, serif;
       color: var(--ink);
       user-select: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
-    /* Outer Stage in Compact 9:16 Portrait Ratio */
+    /* Outer Stage */
     .stage {
       position: relative;
-      height: min(92dvh, 720px);
-      width: min(94vw, calc(min(92dvh, 720px) * 9 / 16));
-      aspect-ratio: 9 / 16;
+      width: 100%;
+      height: 100dvh;
+      max-width: 480px;
+      margin: 0 auto;
       overflow: hidden;
-      border-radius: 18px;
-      background: radial-gradient(circle at center, #781024 0%, #3a0510 100%);
-      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.9), 0 0 0 1.5px rgba(229, 184, 75, 0.35);
+      background-color: #364a3c !important;
+      background: radial-gradient(circle at center, #526b59 0%, #26362b 100%) !important;
+      box-shadow: 0 0 50px rgba(18, 28, 21, 0.85);
     }
 
-    /* Kanjeevaram Zari Brocade Texture Overlay */
+    /* Subtle Silk Brocade Texture Overlay */
     .brocade-pattern {
       position: absolute;
       inset: 0;
-      opacity: 0.14;
+      opacity: 0.16;
       pointer-events: none;
       background-image:
-        radial-gradient(circle at 12px 12px, #ffd97d 1.5px, transparent 1.6px),
-        radial-gradient(circle at 24px 24px, #ffd97d 1px, transparent 1.1px);
+        radial-gradient(circle at 12px 12px, #f6dde1 1.5px, transparent 1.6px),
+        radial-gradient(circle at 24px 24px, #fff6da 1px, transparent 1.1px);
       background-size: 24px 24px;
     }
 
     /* ================= INNER BOOKLET (2 PAGES) ================= */
     .booklet {
       position: absolute;
-      inset: 9px;
-      border-radius: 14px;
-      background: linear-gradient(160deg, var(--ivory) 0%, var(--ivory-warm) 100%);
+      inset: 10px;
+      border-radius: 18px;
+      background-color: #fcf9f4 !important;
+      background: linear-gradient(165deg, var(--ivory) 0%, var(--blush-pale) 55%, var(--champagne) 100%) !important;
       border: 2px solid var(--gold);
       box-shadow:
-        inset 0 0 0 4px var(--ivory),
-        inset 0 0 0 5.5px rgba(184, 131, 31, 0.55),
-        0 12px 35px rgba(0, 0, 0, 0.6);
+        inset 0 0 0 5px var(--ivory),
+        inset 0 0 0 6.5px rgba(207, 161, 74, 0.55),
+        0 12px 35px rgba(20, 30, 23, 0.55);
       overflow: hidden;
       opacity: 0;
       transform: scale(0.95);
-      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: opacity 0.9s ease 0.35s, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
       z-index: 1;
     }
 
     .stage.opened .booklet {
       opacity: 1;
       transform: scale(1);
-      transition-delay: 0.3s;
     }
 
     .page {
       position: absolute;
       inset: 0;
-      padding: clamp(12px, 2.2vh, 18px) clamp(12px, 3.5vw, 18px);
+      padding: 15px 16px 14px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -127,19 +137,19 @@
       pointer-events: auto;
     }
 
-    /* Corner Temple Filigree */
+    /* Corner Botanical & Gold Filigree */
     .corner {
       position: absolute;
-      width: 28px;
-      height: 28px;
+      width: 34px;
+      height: 34px;
       pointer-events: none;
-      opacity: 0.85;
+      opacity: 0.9;
       z-index: 5;
     }
-    .corner.tl { top: 6px; left: 6px; }
-    .corner.tr { top: 6px; right: 6px; transform: scaleX(-1); }
-    .corner.bl { bottom: 6px; left: 6px; transform: scaleY(-1); }
-    .corner.br { bottom: 6px; right: 6px; transform: scale(-1, -1); }
+    .corner.tl { top: 8px; left: 8px; }
+    .corner.tr { top: 8px; right: 8px; transform: scaleX(-1); }
+    .corner.bl { bottom: 8px; left: 8px; transform: scaleY(-1); }
+    .corner.br { bottom: 8px; right: 8px; transform: scale(-1, -1); }
 
     /* Mantras Header */
     .mantras {
@@ -148,63 +158,90 @@
       justify-content: space-between;
       align-items: center;
       font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(8px, 2.2vw, 9.5px);
+      font-size: 9px;
       font-weight: 700;
-      letter-spacing: 0.6px;
-      color: var(--crimson);
+      letter-spacing: 0.7px;
+      color: var(--sage-deep);
       padding: 0 8px;
-    }
-
-    .ganesha-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 1px 0;
     }
 
     .invite-title {
       font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(12px, 3.4vw, 15px);
+      font-size: 14px;
       font-weight: 700;
-      letter-spacing: 1.8px;
-      color: var(--crimson);
+      letter-spacing: 2px;
+      color: var(--blush-dark);
       text-transform: uppercase;
-      margin-top: 2px;
+      margin-top: 1px;
     }
 
     .solicit-text {
-      font-size: clamp(11.5px, 3.1vw, 13.5px);
+      font-size: 12.8px;
       line-height: 1.25;
       color: var(--ink-muted);
       font-style: italic;
       max-width: 94%;
     }
 
-    .couple-block {
+    /* Couple Photo & Names Section */
+    .couple-showcase {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
       margin: 2px 0;
     }
 
+    .photo-cameo {
+      position: relative;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, #fff6da 0%, #cfa14a 50%, #9c7225 100%);
+      box-shadow:
+        0 0 0 3px var(--blush-light),
+        0 0 0 4.5px rgba(82, 107, 89, 0.45),
+        0 6px 16px rgba(54, 74, 60, 0.25);
+      margin-bottom: 4px;
+      overflow: hidden;
+    }
+
+    .photo-cameo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 50%;
+      display: block;
+      background-color: var(--blush-light);
+    }
+
+    .names-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     .prefix {
-      font-size: clamp(10.5px, 2.8vw, 12px);
+      font-size: 11px;
       font-weight: 600;
-      color: var(--gold-deep);
+      color: var(--sage);
       letter-spacing: 0.5px;
     }
 
     .couple-name {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(28px, 8.2vw, 36px);
+      font-size: 32px;
       line-height: 1.02;
-      background: linear-gradient(180deg, #8a1128 0%, #4d0715 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 1px 0 rgba(229, 184, 75, 0.45));
+      color: var(--blush-dark);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
     }
 
     .weds-badge {
       display: inline-block;
       font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(8.5px, 2.3vw, 10px);
+      font-size: 9.5px;
       font-weight: 700;
       letter-spacing: 2px;
       color: var(--gold-deep);
@@ -212,62 +249,63 @@
     }
 
     .parents-sub {
-      font-size: clamp(10.5px, 2.7vw, 11.8px);
+      font-size: 11.2px;
       line-height: 1.2;
       color: var(--ink-muted);
+      margin-top: 1px;
     }
 
     /* Event Timings Card */
     .timings-card {
       width: 100%;
-      background: linear-gradient(135deg, rgba(107, 12, 31, 0.06) 0%, rgba(229, 184, 75, 0.14) 100%);
-      border: 1px solid rgba(184, 131, 31, 0.45);
-      border-radius: 10px;
-      padding: 6px 8px;
+      background: linear-gradient(135deg, rgba(220, 229, 221, 0.55) 0%, rgba(246, 221, 225, 0.65) 100%);
+      border: 1px solid rgba(207, 161, 74, 0.55);
+      border-radius: 12px;
+      padding: 7px 9px;
       margin: 2px 0;
     }
 
     .date-banner {
       font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(10px, 2.7vw, 11.5px);
+      font-size: 11px;
       font-weight: 700;
-      color: var(--crimson);
-      letter-spacing: 0.4px;
+      color: var(--sage-deep);
+      letter-spacing: 0.5px;
       padding-bottom: 4px;
-      border-bottom: 1px dashed rgba(184, 131, 31, 0.45);
+      border-bottom: 1px dashed rgba(158, 88, 100, 0.45);
       margin-bottom: 5px;
     }
 
     .schedule-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 6px;
+      gap: 7px;
       text-align: center;
     }
 
     .sched-item {
-      background: rgba(255, 253, 248, 0.85);
-      border: 1px solid rgba(229, 184, 75, 0.5);
+      background-color: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(201, 127, 139, 0.45);
       border-radius: 8px;
-      padding: 4px 3px;
+      padding: 4px 4px;
     }
 
     .sched-label {
       font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(8px, 2.1vw, 9.2px);
+      font-size: 9px;
       font-weight: 700;
-      color: var(--crimson);
+      color: var(--blush-dark);
       text-transform: uppercase;
     }
 
     .sched-time {
-      font-size: clamp(11.5px, 3.1vw, 13px);
+      font-size: 13px;
       font-weight: 700;
-      color: var(--ink);
+      color: var(--sage-deep);
     }
 
     .sched-note {
-      font-size: clamp(9.5px, 2.4vw, 10.5px);
+      font-size: 10px;
       font-style: italic;
       color: var(--gold-deep);
       font-weight: 600;
@@ -276,13 +314,14 @@
     /* Countdown Timer */
     .countdown-wrap {
       width: 100%;
+      margin: 1px 0;
     }
 
     .countdown-title {
-      font-size: clamp(8.5px, 2.2vw, 9.5px);
-      letter-spacing: 1.2px;
+      font-size: 9.5px;
+      letter-spacing: 1.4px;
       text-transform: uppercase;
-      color: var(--gold-deep);
+      color: var(--sage);
       font-weight: 700;
       margin-bottom: 3px;
     }
@@ -290,55 +329,54 @@
     .countdown-boxes {
       display: flex;
       justify-content: center;
-      gap: 6px;
+      gap: 7px;
     }
 
     .cd-box {
-      min-width: clamp(46px, 12vw, 54px);
-      background: linear-gradient(180deg, var(--crimson) 0%, var(--crimson-dark) 100%);
+      min-width: 54px;
+      background-color: #364a3c !important;
+      background: linear-gradient(180deg, var(--sage) 0%, var(--sage-dark) 100%) !important;
       border: 1px solid var(--gold);
-      border-radius: 7px;
-      padding: 3px 4px;
-      color: var(--gold-light);
-      box-shadow: 0 3px 8px rgba(66, 6, 18, 0.25);
+      border-radius: 8px;
+      padding: 3px 5px;
+      color: var(--blush-light);
+      box-shadow: 0 3px 8px rgba(38, 54, 43, 0.22);
     }
 
     .cd-num {
       font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(12px, 3.3vw, 14px);
+      font-size: 13.5px;
       font-weight: 700;
       line-height: 1.1;
+      color: #fff6da;
     }
 
     .cd-lbl {
       font-size: 8px;
       text-transform: uppercase;
-      letter-spacing: 0.6px;
-      opacity: 0.9;
+      letter-spacing: 0.8px;
+      color: var(--blush-light);
     }
 
-    /* Navigation & Closing Buttons */
+    /* Navigation Button */
     .nav-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
-      padding: 6px 16px;
+      gap: 6px;
+      padding: 8px 20px;
       border-radius: 999px;
       border: 1.5px solid var(--gold);
-      background: linear-gradient(180deg, var(--crimson-light) 0%, var(--crimson-dark) 100%);
-      color: var(--gold-light);
+      background-color: #9e5864 !important;
+      background: linear-gradient(180deg, var(--blush) 0%, var(--blush-dark) 100%) !important;
+      color: #ffffff !important;
       font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(9px, 2.4vw, 10px);
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.9px;
+      letter-spacing: 1px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(66, 6, 18, 0.3);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .nav-btn:hover {
-      box-shadow: 0 6px 16px rgba(66, 6, 18, 0.45);
+      box-shadow: 0 4px 12px rgba(158, 88, 100, 0.35);
+      transition: transform 0.2s ease;
     }
 
     .nav-btn:active {
@@ -346,20 +384,13 @@
     }
 
     .nav-btn.secondary {
-      background: transparent;
-      color: var(--crimson);
-      border-color: rgba(184, 131, 31, 0.75);
+      background: transparent !important;
+      background-color: transparent !important;
+      color: var(--sage-deep) !important;
+      border-color: rgba(82, 107, 89, 0.6);
       box-shadow: none;
-      padding: 5px 12px;
-      font-size: clamp(8.5px, 2.2vw, 9.5px);
-    }
-
-    .page2-actions {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
+      padding: 5px 15px;
+      font-size: 9px;
     }
 
     /* ================= PAGE 2 STYLES ================= */
@@ -369,24 +400,24 @@
 
     .section-heading {
       font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(11px, 2.9vw, 12.5px);
+      font-size: 13px;
       font-weight: 700;
-      color: var(--crimson);
+      color: var(--blush-dark);
       letter-spacing: 1.5px;
       text-transform: uppercase;
     }
 
     .venue-name {
       font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(14px, 3.9vw, 16.5px);
+      font-size: 16px;
       font-weight: 900;
-      color: var(--ink);
-      margin-top: 1px;
+      color: var(--sage-deep);
+      margin-top: 2px;
     }
 
     .venue-address {
-      font-size: clamp(11.5px, 3vw, 13px);
-      line-height: 1.25;
+      font-size: 13px;
+      line-height: 1.3;
       color: var(--ink-muted);
     }
 
@@ -395,13 +426,13 @@
       display: block;
       width: 100%;
       text-decoration: none;
-      background: #fffdf8;
+      background-color: #ffffff !important;
       border: 1.5px solid var(--gold);
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 6px 18px rgba(66, 6, 18, 0.16);
+      box-shadow: 0 6px 18px rgba(38, 54, 43, 0.16);
       transition: transform 0.2s ease;
-      margin: 2px 0;
+      margin: 4px 0;
     }
 
     .map-card:active {
@@ -410,69 +441,70 @@
 
     .map-illustration {
       width: 100%;
-      height: clamp(92px, 16vh, 118px);
+      height: 138px;
       display: block;
-      background: linear-gradient(180deg, #f9f1df 0%, #efe0c2 100%);
+      background: linear-gradient(180deg, #f3f7f4 0%, #faeef0 100%);
     }
 
     .map-cta {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      padding: 6px 10px;
-      background: linear-gradient(180deg, var(--crimson) 0%, var(--crimson-dark) 100%);
-      color: var(--gold-light);
+      gap: 7px;
+      padding: 8px 12px;
+      background-color: #364a3c !important;
+      background: linear-gradient(180deg, var(--sage) 0%, var(--sage-dark) 100%) !important;
+      color: #fff6da !important;
       font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(8.5px, 2.3vw, 10px);
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.8px;
+      letter-spacing: 1px;
     }
 
     /* Hosts & Gracious Presence */
     .presence-box {
-      padding: 6px 8px;
-      border-top: 1px solid rgba(184, 131, 31, 0.4);
-      border-bottom: 1px solid rgba(184, 131, 31, 0.4);
+      padding: 6px 10px;
+      border-top: 1px solid rgba(201, 127, 139, 0.45);
+      border-bottom: 1px solid rgba(201, 127, 139, 0.45);
       width: 100%;
     }
 
     .presence-quote {
-      font-size: clamp(12px, 3.2vw, 13.8px);
+      font-size: 13.8px;
       font-style: italic;
       font-weight: 600;
-      color: var(--crimson);
-      line-height: 1.25;
+      color: var(--blush-dark);
+      line-height: 1.3;
     }
 
     .hosts-block {
-      width: 100%;
+      margin-top: 2px;
     }
 
     .invited-lbl {
-      font-size: clamp(9.5px, 2.5vw, 10.5px);
+      font-size: 10.5px;
       text-transform: uppercase;
-      letter-spacing: 1.4px;
-      color: var(--gold-deep);
+      letter-spacing: 1.5px;
+      color: var(--sage);
       font-weight: 700;
     }
 
     .host-names {
-      font-size: clamp(12px, 3.2vw, 14px);
+      font-size: 13.8px;
       font-weight: 700;
-      line-height: 1.25;
-      color: var(--ink);
+      line-height: 1.3;
+      color: var(--sage-deep);
       margin-top: 2px;
     }
 
     .compliments {
-      font-size: clamp(10.5px, 2.7vw, 11.5px);
+      font-size: 11.5px;
       font-style: italic;
       color: var(--ink-muted);
       margin-top: 2px;
     }
 
-    /* ================= SILK CURTAIN & PEARL COVER ================= */
+    /* ================= BLUSH ROSE & SAGE CURTAIN COVER ================= */
     .cover-overlay {
       position: absolute;
       inset: 0;
@@ -481,48 +513,44 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      visibility: visible;
-      opacity: 1;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
+      transition: opacity 0.8s ease 0.75s, visibility 0.8s ease 0.75s;
     }
 
     .stage.opened .cover-overlay {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transition-delay: 0.85s;
     }
 
-    /* Left & Right Pleated Crimson Silk Curtains */
+    /* Left & Right Pleated Blush Rose Silk Curtains */
     .curtain {
       position: absolute;
       top: 0;
       bottom: 0;
       width: 51%;
+      background-color: #c97f8b !important;
       background:
         repeating-linear-gradient(
           90deg,
-          #470613 0px,
-          #7c1026 14px,
-          #9c1934 24px,
-          #5e091a 38px,
-          #3b040f 48px
-        );
-      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.65);
-      transition: transform 1.15s cubic-bezier(0.65, 0, 0.35, 1);
+          #964f5b 0px,
+          #c97f8b 14px,
+          #e6aab4 24px,
+          #b36874 38px,
+          #87434f 48px
+        ) !important;
+      box-shadow: inset 0 0 40px rgba(68, 28, 35, 0.45);
+      transition: transform 1.25s cubic-bezier(0.65, 0, 0.35, 1);
       z-index: 21;
     }
 
     .curtain.left {
       left: 0;
       border-right: 2px solid var(--gold);
-      transform: translateX(0%);
     }
 
     .curtain.right {
       right: 0;
       border-left: 2px solid var(--gold);
-      transform: translateX(0%);
     }
 
     .stage.opened .curtain.left {
@@ -533,17 +561,15 @@
       transform: translateX(102%);
     }
 
-    /* Top Pearl Toran Valance */
+    /* Top Pearl & Sage Toran Valance */
     .pearl-toran {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: clamp(50px, 9vh, 68px);
       z-index: 23;
       pointer-events: none;
-      transform: translateY(0%);
-      transition: transform 0.95s ease;
+      transition: transform 1s ease;
     }
 
     .stage.opened .pearl-toran {
@@ -554,83 +580,82 @@
     .cover-center {
       position: relative;
       z-index: 24;
-      width: 86%;
-      padding: clamp(18px, 3vh, 24px) 14px;
-      border-radius: 18px;
-      background: radial-gradient(circle at center, rgba(66, 6, 18, 0.94) 0%, rgba(38, 3, 10, 0.97) 100%);
+      width: 88%;
+      padding: 24px 16px;
+      border-radius: 22px;
+      background-color: #2f4034 !important;
+      background: radial-gradient(circle at center, rgba(54, 74, 60, 0.96) 0%, rgba(34, 48, 38, 0.98) 100%) !important;
       border: 1.5px solid var(--gold);
       box-shadow:
-        0 0 0 4px rgba(66, 6, 18, 0.85),
-        0 0 0 5.5px rgba(229, 184, 75, 0.6),
-        0 18px 40px rgba(0, 0, 0, 0.75);
+        0 0 0 4px rgba(54, 74, 60, 0.85),
+        0 0 0 5.5px rgba(246, 221, 225, 0.65),
+        0 18px 40px rgba(24, 34, 27, 0.7);
       text-align: center;
-      transform: scale(1);
-      opacity: 1;
-      transition: transform 0.65s ease 0.25s, opacity 0.55s ease 0.25s;
+      transition: transform 0.7s ease, opacity 0.6s ease;
     }
 
     .stage.opened .cover-center {
       transform: scale(0.9);
       opacity: 0;
-      transition-delay: 0s;
     }
 
     .cover-blessing {
       font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(8.5px, 2.3vw, 10px);
-      letter-spacing: 2px;
-      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 2.2px;
+      color: var(--blush-light);
       text-transform: uppercase;
       margin-bottom: 8px;
     }
 
     .cover-names {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(34px, 9.5vw, 42px);
-      line-height: 1.1;
-      background: linear-gradient(180deg, #fff6d1 0%, #e5b84b 55%, #b8831f 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.65));
+      font-size: 40px;
+      line-height: 1.12;
+      color: #fff6da;
+      text-shadow: 0 2px 6px rgba(20, 30, 23, 0.6);
     }
 
     .cover-amp {
       font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(14px, 3.8vw, 16px);
+      font-size: 15px;
+      color: var(--blush-mid);
       display: block;
       margin: 2px 0;
     }
 
-    /* Silk Ribbon & Clasp */
+    /* Blush Silk Ribbon & Gold Clasp */
     .silk-ribbon {
       position: relative;
-      margin: 14px -14px 6px;
-      height: 42px;
-      background: linear-gradient(180deg, #8f142d 0%, #570818 50%, #3d0410 100%);
-      border-top: 1.5px solid var(--gold);
-      border-bottom: 1.5px solid var(--gold);
+      margin: 18px -16px 6px;
+      height: 46px;
+      background-color: #b86c78 !important;
+      background: linear-gradient(180deg, #dfa2ac 0%, #b86c78 50%, #964f5b 100%) !important;
+      border-top: 1.5px solid var(--gold-light);
+      border-bottom: 1.5px solid var(--gold-light);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 6px 14px rgba(20, 30, 23, 0.45);
     }
 
     .open-clasp {
-      padding: 8px 22px;
+      padding: 10px 26px;
       border-radius: 999px;
-      border: 2px solid #fff3c4;
-      background: linear-gradient(180deg, #f6d57e 0%, #c89128 100%);
-      color: #3b040f;
+      border: 2px solid #fff6da;
+      background-color: #364a3c !important;
+      background: linear-gradient(180deg, #526b59 0%, #26362b 100%) !important;
+      color: #fff6da !important;
       font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(10px, 2.8vw, 11.5px);
+      font-size: 11.5px;
       font-weight: 900;
-      letter-spacing: 1.8px;
+      letter-spacing: 2px;
       text-transform: uppercase;
       cursor: pointer;
       box-shadow:
-        0 0 0 3px #570818,
-        0 0 20px rgba(246, 213, 126, 0.65);
-      animation: pulseGold 2.2s infinite ease-in-out;
+        0 0 0 3px #b86c78,
+        0 0 20px rgba(255, 246, 218, 0.6);
+      animation: pulseSage 2.2s infinite ease-in-out;
     }
 
     .open-clasp:active {
@@ -638,16 +663,16 @@
     }
 
     .tap-hint {
-      margin-top: 8px;
-      font-size: clamp(10.5px, 2.8vw, 11.5px);
+      margin-top: 10px;
+      font-size: 11.5px;
       font-style: italic;
-      color: var(--gold-light);
-      opacity: 0.85;
+      color: var(--blush-light);
+      opacity: 0.9;
     }
 
-    @keyframes pulseGold {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 0 3px #570818, 0 0 14px rgba(246, 213, 126, 0.5); }
-      50% { transform: scale(1.04); box-shadow: 0 0 0 3px #570818, 0 0 26px rgba(246, 213, 126, 0.9); }
+    @keyframes pulseSage {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 3px #b86c78, 0 0 12px rgba(255, 246, 218, 0.45); }
+      50% { transform: scale(1.04); box-shadow: 0 0 0 3px #b86c78, 0 0 24px rgba(255, 246, 218, 0.85); }
     }
   </style>
 </head>
@@ -655,22 +680,22 @@
   <div class="stage" id="stage">
     <div class="brocade-pattern"></div>
 
-    <!-- ================= SILK CURTAIN & PEARL COVER ================= -->
+    <!-- ================= BLUSH ROSE & SAGE CURTAIN COVER ================= -->
     <div class="cover-overlay" id="coverOverlay">
       <div class="curtain left"></div>
       <div class="curtain right"></div>
 
-      <!-- Hanging 3D Pearl Toran Swags -->
+      <!-- Hanging 3D Pearl & Sage Toran Swags -->
       <svg class="pearl-toran" viewBox="0 0 400 72" preserveAspectRatio="none">
         <defs>
           <radialGradient id="pearlGrad" cx="35%" cy="30%" r="65%">
             <stop offset="0%" stop-color="#ffffff"/>
-            <stop offset="55%" stop-color="#f5ebd6"/>
-            <stop offset="100%" stop-color="#c9b289"/>
+            <stop offset="55%" stop-color="#fcf4f5"/>
+            <stop offset="100%" stop-color="#d4bec2"/>
           </radialGradient>
         </defs>
-        <path d="M0,0 Q50,55 100,0 Q150,55 200,0 Q250,55 300,0 Q350,55 400,0" fill="none" stroke="#e5b84b" stroke-width="2.5"/>
-        <path d="M0,0 Q50,38 100,0 Q150,38 200,0 Q250,38 300,0 Q350,38 400,0" fill="#420612" stroke="#b8831f" stroke-width="1.5"/>
+        <path d="M0,0 Q50,55 100,0 Q150,55 200,0 Q250,55 300,0 Q350,55 400,0" fill="none" stroke="#fff6da" stroke-width="2.5"/>
+        <path d="M0,0 Q50,38 100,0 Q150,38 200,0 Q250,38 300,0 Q350,38 400,0" fill="#364a3c" stroke="#cfa14a" stroke-width="1.5"/>
         <g fill="url(#pearlGrad)">
           <circle cx="15" cy="14" r="3.2"/><circle cx="32" cy="23" r="3.5"/><circle cx="50" cy="27" r="4"/><circle cx="68" cy="23" r="3.5"/><circle cx="85" cy="14" r="3.2"/>
           <circle cx="115" cy="14" r="3.2"/><circle cx="132" cy="23" r="3.5"/><circle cx="150" cy="27" r="4"/><circle cx="168" cy="23" r="3.5"/><circle cx="185" cy="14" r="3.2"/>
@@ -685,7 +710,7 @@
 
       <!-- Center Title & Silk Ribbon Clasp -->
       <div class="cover-center">
-        <div class="cover-blessing" id="coverStatus">Shubhamasthu • Wedding Invitation</div>
+        <div class="cover-blessing">Shubhamasthu • Wedding Invitation</div>
         <div class="cover-names">
           Hari Priya
           <span class="cover-amp">&amp;</span>
@@ -695,19 +720,19 @@
         <div class="silk-ribbon">
           <button type="button" class="open-clasp" id="openBtn">Open Invitation</button>
         </div>
-        <div class="tap-hint" id="coverHint">Tap to part the curtains &amp; unfold</div>
+        <div class="tap-hint">Tap to part the curtains &amp; unfold</div>
       </div>
     </div>
 
     <!-- ================= INNER 2-PAGE BOOKLET ================= -->
     <div class="booklet" id="booklet">
-      <!-- Ornate Gold Corners -->
-      <svg class="corner tl" viewBox="0 0 40 40"><path d="M2,38 L2,8 Q2,2 8,2 L38,2 M2,22 Q14,22 14,10 Q14,2 22,2" fill="none" stroke="#b8831f" stroke-width="2"/><circle cx="9" cy="9" r="2.5" fill="#8f142d"/></svg>
-      <svg class="corner tr" viewBox="0 0 40 40"><path d="M2,38 L2,8 Q2,2 8,2 L38,2 M2,22 Q14,22 14,10 Q14,2 22,2" fill="none" stroke="#b8831f" stroke-width="2"/><circle cx="9" cy="9" r="2.5" fill="#8f142d"/></svg>
-      <svg class="corner bl" viewBox="0 0 40 40"><path d="M2,38 L2,8 Q2,2 8,2 L38,2 M2,22 Q14,22 14,10 Q14,2 22,2" fill="none" stroke="#b8831f" stroke-width="2"/><circle cx="9" cy="9" r="2.5" fill="#8f142d"/></svg>
-      <svg class="corner br" viewBox="0 0 40 40"><path d="M2,38 L2,8 Q2,2 8,2 L38,2 M2,22 Q14,22 14,10 Q14,2 22,2" fill="none" stroke="#b8831f" stroke-width="2"/><circle cx="9" cy="9" r="2.5" fill="#8f142d"/></svg>
+      <!-- Ornate Sage & Gold Corners -->
+      <svg class="corner tl" viewBox="0 0 40 40"><path d="M2,38 L2,8 Q2,2 8,2 L38,2 M2,22 Q14,22 14,10 Q14,2 22,2" fill="none" stroke="#cfa14a" stroke-width="2"/><circle cx="9" cy="9" r="2.5" fill="#526b59"/></svg>
+      <svg class="corner tr" viewBox="0 0 40 40"><path d="M2,38 L2,8 Q2,2 8,2 L38,2 M2,22 Q14,22 14,10 Q14,2 22,2" fill="none" stroke="#cfa14a" stroke-width="2"/><circle cx="9" cy="9" r="2.5" fill="#526b59"/></svg>
+      <svg class="corner bl" viewBox="0 0 40 40"><path d="M2,38 L2,8 Q2,2 8,2 L38,2 M2,22 Q14,22 14,10 Q14,2 22,2" fill="none" stroke="#cfa14a" stroke-width="2"/><circle cx="9" cy="9" r="2.5" fill="#526b59"/></svg>
+      <svg class="corner br" viewBox="0 0 40 40"><path d="M2,38 L2,8 Q2,2 8,2 L38,2 M2,22 Q14,22 14,10 Q14,2 22,2" fill="none" stroke="#cfa14a" stroke-width="2"/><circle cx="9" cy="9" r="2.5" fill="#526b59"/></svg>
 
-      <!-- PAGE 1: BLESSINGS, COUPLE, EVENT TIMINGS & COUNTDOWN -->
+      <!-- PAGE 1: BLESSINGS, COUPLE PHOTO, NAMES, TIMINGS & COUNTDOWN -->
       <section class="page page-1" id="page1">
         <div class="mantras">
           <span>Srirasthu</span>
@@ -715,28 +740,26 @@
           <span>Kalyanamasthu</span>
         </div>
 
-        <div class="ganesha-wrap">
-          <svg width="26" height="26" viewBox="0 0 64 64" fill="none">
-            <circle cx="32" cy="32" r="29" stroke="#b8831f" stroke-width="1.5" stroke-dasharray="3 2"/>
-            <path d="M32 13 C25 13 21 18 21 24 C21 28 24 31 28 32 C25 35 24 41 28 45 C31 48 37 47 38 43 C39 40 36 39 34 40 C32 41 31 39 32 36 C33 33 38 31 40 27 C42 22 39 13 32 13 Z" fill="#8f142d"/>
-            <path d="M25 11 L32 6 L39 11" stroke="#b8831f" stroke-width="2" fill="none"/>
-            <circle cx="32" cy="18" r="1.6" fill="#ffd97d"/>
-          </svg>
-          <div class="invite-title">Wedding Invitation</div>
-        </div>
+        <div class="invite-title">Wedding Invitation</div>
 
         <p class="solicit-text">
           We solicit your gracious presence with family &amp; friends on the auspicious occasion of the marriage of our youngest daughter
         </p>
 
-        <div class="couple-block">
-          <div class="prefix">Chi. La. Sou.</div>
-          <div class="couple-name">Hari Priya</div>
-          <div class="weds-badge">✦ WITH ✦</div>
-          <div class="prefix">Chi.</div>
-          <div class="couple-name">Ram Nived</div>
-          <div class="parents-sub">
-            (Only S/o Sri Uppala Murali Krishna &amp; Smt. Karuna Sri)
+        <!-- Couple Photo Cameo & Names -->
+        <div class="couple-showcase">
+          <div class="photo-cameo">
+            <img src="couple.jpg" alt="Hari Priya and Ram Nived" />
+          </div>
+          <div class="names-row">
+            <div class="prefix">Chi. La. Sou.</div>
+            <div class="couple-name">Hari Priya</div>
+            <div class="weds-badge">✦ WITH ✦</div>
+            <div class="prefix">Chi.</div>
+            <div class="couple-name">Ram Nived</div>
+            <div class="parents-sub">
+              (Only S/o Sri Uppala Murali Krishna &amp; Smt. Karuna Sri)
+            </div>
           </div>
         </div>
 
@@ -773,8 +796,12 @@
         </button>
       </section>
 
-      <!-- PAGE 2: VENUE, INTERACTIVE ROUTE MAP, HOSTS & CLOSING -->
+      <!-- PAGE 2: VENUE, INTERACTIVE ROUTE MAP & HOSTS -->
       <section class="page page-2" id="page2">
+        <button type="button" class="nav-btn secondary" id="prevPageBtn">
+          ↑ Back to Invitation
+        </button>
+
         <div class="venue-header">
           <div class="section-heading">Wedding Venue</div>
           <div class="venue-name">Mehdi Manzil</div>
@@ -793,24 +820,29 @@
           aria-label="Open Mehdi Manzil location in Google Maps"
         >
           <svg class="map-illustration" viewBox="0 0 360 150" preserveAspectRatio="xMidYMid slice">
-            <path d="M-10,35 L370,25 M-10,115 L370,125 M95,-10 L85,160 M265,-10 L275,160" stroke="#e2cfa8" stroke-width="6" fill="none"/>
-            <path d="M-10,35 L370,25 M-10,115 L370,125 M95,-10 L85,160 M265,-10 L275,160" stroke="#fffaf0" stroke-width="2.5" fill="none"/>
-            <path d="M58,108 C115,108 135,52 195,62 C235,68 255,48 296,46" stroke="#b8831f" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.35"/>
-            <path d="M58,108 C115,108 135,52 195,62 C235,68 255,48 296,46" stroke="#8f142d" stroke-width="3" stroke-dasharray="7 5" stroke-linecap="round" fill="none"/>
+            <!-- Soft Sage & Blush Map Roads -->
+            <path d="M-10,35 L370,25 M-10,115 L370,125 M95,-10 L85,160 M265,-10 L275,160" stroke="#dce5dd" stroke-width="7" fill="none"/>
+            <path d="M-10,35 L370,25 M-10,115 L370,125 M95,-10 L85,160 M265,-10 L275,160" stroke="#ffffff" stroke-width="2.5" fill="none"/>
 
+            <!-- Highlighted Route Curve -->
+            <path d="M58,108 C115,108 135,52 195,62 C235,68 255,48 296,46" stroke="#cfa14a" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.35"/>
+            <path d="M58,108 C115,108 135,52 195,62 C235,68 255,48 296,46" stroke="#9e5864" stroke-width="3" stroke-dasharray="7 5" stroke-linecap="round" fill="none"/>
+
+            <!-- Start Pin: Your Home -->
             <g transform="translate(58, 108)">
-              <circle cx="0" cy="0" r="14" fill="#fffdf8" stroke="#b8831f" stroke-width="2"/>
-              <path d="M-6,1 L0,-5 L6,1 L4,1 L4,6 L-4,6 L-4,1 Z" fill="#6b0c1f"/>
-              <rect x="-26" y="17" width="52" height="16" rx="8" fill="#420612"/>
-              <text x="0" y="28" text-anchor="middle" fill="#fff3c4" font-size="8.5" font-family="sans-serif" font-weight="bold">Your Home</text>
+              <circle cx="0" cy="0" r="14" fill="#ffffff" stroke="#526b59" stroke-width="2"/>
+              <path d="M-6,1 L0,-5 L6,1 L4,1 L4,6 L-4,6 L-4,1 Z" fill="#364a3c"/>
+              <rect x="-26" y="17" width="52" height="16" rx="8" fill="#364a3c"/>
+              <text x="0" y="28" text-anchor="middle" fill="#fff6da" font-size="8.5" font-family="sans-serif" font-weight="bold">Your Home</text>
             </g>
 
+            <!-- Destination Pin: Mehdi Manzil -->
             <g transform="translate(296, 46)">
-              <circle cx="0" cy="0" r="20" fill="#8f142d" opacity="0.18"/>
-              <path d="M0,-22 C-9,-22 -16,-15 -16,-6 C-16,6 0,18 0,18 C0,18 16,6 16,-6 C16,-15 9,-22 0,-22 Z" fill="#8f142d" stroke="#ffd97d" stroke-width="2"/>
-              <circle cx="0" cy="-7" r="5" fill="#fff3c4"/>
-              <rect x="-44" y="21" width="88" height="18" rx="9" fill="#420612" stroke="#e5b84b" stroke-width="1"/>
-              <text x="0" y="33" text-anchor="middle" fill="#fff3c4" font-size="9" font-family="sans-serif" font-weight="bold">Mehdi Manzil</text>
+              <circle cx="0" cy="0" r="20" fill="#c97f8b" opacity="0.25"/>
+              <path d="M0,-22 C-9,-22 -16,-15 -16,-6 C-16,6 0,18 0,18 C0,18 16,6 16,-6 C16,-15 9,-22 0,-22 Z" fill="#9e5864" stroke="#fff6da" stroke-width="2"/>
+              <circle cx="0" cy="-7" r="5" fill="#fff6da"/>
+              <rect x="-44" y="21" width="88" height="18" rx="9" fill="#364a3c" stroke="#cfa14a" stroke-width="1"/>
+              <text x="0" y="33" text-anchor="middle" fill="#fff6da" font-size="9" font-family="sans-serif" font-weight="bold">Mehdi Manzil</text>
             </g>
           </svg>
           <div class="map-cta">
@@ -832,16 +864,6 @@
           </div>
           <div class="compliments">With best compliments from: Near &amp; Dear</div>
         </div>
-
-        <!-- Navigation & Closing Controls -->
-        <div class="page2-actions">
-          <button type="button" class="nav-btn secondary" id="prevPageBtn">
-            ↑ Back
-          </button>
-          <button type="button" class="nav-btn" id="closeInviteBtn">
-            Close Invitation ✦
-          </button>
-        </div>
       </section>
     </div>
   </div>
@@ -851,28 +873,12 @@
       var stage = document.getElementById('stage');
       var openBtn = document.getElementById('openBtn');
       var coverOverlay = document.getElementById('coverOverlay');
-      var coverStatus = document.getElementById('coverStatus');
-      var coverHint = document.getElementById('coverHint');
       var booklet = document.getElementById('booklet');
       var nextPageBtn = document.getElementById('nextPageBtn');
       var prevPageBtn = document.getElementById('prevPageBtn');
-      var closeInviteBtn = document.getElementById('closeInviteBtn');
 
       function openEnvelope() {
         stage.classList.add('opened');
-      }
-
-      function closeEnvelope() {
-        // Draw the crimson silk curtains & pearl toran shut
-        stage.classList.remove('opened');
-        coverStatus.textContent = 'With Warm Regards • Save the Date';
-        openBtn.textContent = 'Reopen Invitation';
-        coverHint.textContent = 'Thank you • Tap anytime to view again';
-
-        // Reset back to Page 1 after curtains finish closing
-        setTimeout(function () {
-          booklet.classList.remove('show-page-2');
-        }, 900);
       }
 
       if (openBtn) {
@@ -898,13 +904,7 @@
         });
       }
 
-      if (closeInviteBtn) {
-        closeInviteBtn.addEventListener('click', function () {
-          closeEnvelope();
-        });
-      }
-
-      // Touch swipe support between Page 1, Page 2, and Closing
+      // Touch swipe support between Page 1 and Page 2
       var touchStartY = 0;
       booklet.addEventListener('touchstart', function (e) {
         if (e.touches && e.touches.length > 0) {
@@ -916,11 +916,7 @@
         if (!e.changedTouches || e.changedTouches.length === 0) return;
         var deltaY = touchStartY - e.changedTouches[0].clientY;
         if (deltaY > 45) {
-          if (!booklet.classList.contains('show-page-2')) {
-            booklet.classList.add('show-page-2');
-          } else {
-            closeEnvelope();
-          }
+          booklet.classList.add('show-page-2');
         } else if (deltaY < -45) {
           booklet.classList.remove('show-page-2');
         }
