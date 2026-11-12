@@ -32,22 +32,25 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: #1c0308;
+      background: #140206;
       font-family: 'Cormorant Garamond', Georgia, serif;
       color: var(--ink);
       user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* Outer Stage */
+    /* Outer Stage in 16:9 Widescreen Ratio */
     .stage {
       position: relative;
-      width: 100%;
-      height: 100dvh;
-      max-width: 480px;
-      margin: 0 auto;
+      width: min(96vw, calc(92dvh * 16 / 9));
+      aspect-ratio: 16 / 9;
+      max-width: 960px;
       overflow: hidden;
+      border-radius: 18px;
       background: radial-gradient(circle at center, #781024 0%, #3a0510 100%);
-      box-shadow: 0 0 50px rgba(0, 0, 0, 0.85);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.9), 0 0 0 1.5px rgba(229, 184, 75, 0.35);
     }
 
     /* Kanjeevaram Zari Brocade Texture Overlay */
@@ -66,29 +69,30 @@
     .booklet {
       position: absolute;
       inset: 10px;
-      border-radius: 16px;
+      border-radius: 14px;
       background: linear-gradient(160deg, var(--ivory) 0%, var(--ivory-warm) 100%);
       border: 2px solid var(--gold);
       box-shadow:
-        inset 0 0 0 5px var(--ivory),
-        inset 0 0 0 6.5px rgba(184, 131, 31, 0.55),
+        inset 0 0 0 4px var(--ivory),
+        inset 0 0 0 5.5px rgba(184, 131, 31, 0.55),
         0 12px 35px rgba(0, 0, 0, 0.6);
       overflow: hidden;
       opacity: 0;
       transform: scale(0.95);
-      transition: opacity 0.9s ease 0.35s, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
       z-index: 1;
     }
 
     .stage.opened .booklet {
       opacity: 1;
       transform: scale(1);
+      transition-delay: 0.3s;
     }
 
     .page {
       position: absolute;
       inset: 0;
-      padding: 18px 18px 16px;
+      padding: clamp(10px, 2.2%, 20px) clamp(16px, 3%, 28px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -126,16 +130,16 @@
     /* Corner Temple Filigree */
     .corner {
       position: absolute;
-      width: 34px;
-      height: 34px;
+      width: clamp(24px, 3.5vw, 34px);
+      height: clamp(24px, 3.5vw, 34px);
       pointer-events: none;
       opacity: 0.85;
       z-index: 5;
     }
-    .corner.tl { top: 8px; left: 8px; }
-    .corner.tr { top: 8px; right: 8px; transform: scaleX(-1); }
-    .corner.bl { bottom: 8px; left: 8px; transform: scaleY(-1); }
-    .corner.br { bottom: 8px; right: 8px; transform: scale(-1, -1); }
+    .corner.tl { top: 6px; left: 6px; }
+    .corner.tr { top: 6px; right: 6px; transform: scaleX(-1); }
+    .corner.bl { bottom: 6px; left: 6px; transform: scaleY(-1); }
+    .corner.br { bottom: 6px; right: 6px; transform: scale(-1, -1); }
 
     /* Mantras Header */
     .mantras {
@@ -144,53 +148,81 @@
       justify-content: space-between;
       align-items: center;
       font-family: 'Cinzel Decorative', serif;
-      font-size: 9.5px;
+      font-size: clamp(8px, 1.1vw, 10.5px);
       font-weight: 700;
-      letter-spacing: 0.8px;
+      letter-spacing: 1px;
       color: var(--crimson);
-      padding: 0 6px;
+      padding: 0 18px;
     }
 
-    .ganesha-wrap {
-      margin: 2px 0;
+    /* Widescreen 2-Column Content Grid for Page 1 */
+    .p1-grid {
+      width: 100%;
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 0.95fr;
+      gap: clamp(12px, 2.2vw, 24px);
+      align-items: center;
+      margin: 4px 0;
+    }
+
+    .p1-left {
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      border-right: 1px dashed rgba(184, 131, 31, 0.45);
+      padding-right: clamp(10px, 1.8vw, 20px);
+    }
+
+    .p1-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(6px, 1.2vh, 12px);
+    }
+
+    .ganesha-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 2px;
     }
 
     .invite-title {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 15px;
+      font-size: clamp(12px, 1.6vw, 16px);
       font-weight: 700;
       letter-spacing: 2px;
       color: var(--crimson);
       text-transform: uppercase;
-      margin-top: 2px;
     }
 
     .solicit-text {
-      font-size: 13.5px;
-      line-height: 1.3;
+      font-size: clamp(11px, 1.35vw, 14px);
+      line-height: 1.25;
       color: var(--ink-muted);
       font-style: italic;
-      max-width: 92%;
+      max-width: 96%;
+      margin-bottom: 4px;
     }
 
     .couple-block {
-      margin: 4px 0;
+      margin: 2px 0;
     }
 
     .prefix {
-      font-size: 12px;
+      font-size: clamp(10px, 1.15vw, 12px);
       font-weight: 600;
       color: var(--gold-deep);
-      letter-spacing: 0.6px;
+      letter-spacing: 0.5px;
     }
 
     .couple-name {
       font-family: 'Great Vibes', cursive;
-      font-size: 36px;
-      line-height: 1.05;
+      font-size: clamp(26px, 3.6vw, 38px);
+      line-height: 1.02;
       background: linear-gradient(180deg, #8a1128 0%, #4d0715 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -200,7 +232,7 @@
     .weds-badge {
       display: inline-block;
       font-family: 'Cinzel Decorative', serif;
-      font-size: 10px;
+      font-size: clamp(8.5px, 1vw, 10.5px);
       font-weight: 700;
       letter-spacing: 2px;
       color: var(--gold-deep);
@@ -208,8 +240,8 @@
     }
 
     .parents-sub {
-      font-size: 11.8px;
-      line-height: 1.25;
+      font-size: clamp(10px, 1.15vw, 12px);
+      line-height: 1.2;
       color: var(--ink-muted);
     }
 
@@ -218,18 +250,17 @@
       width: 100%;
       background: linear-gradient(135deg, rgba(107, 12, 31, 0.06) 0%, rgba(229, 184, 75, 0.14) 100%);
       border: 1px solid rgba(184, 131, 31, 0.45);
-      border-radius: 12px;
-      padding: 8px 10px;
-      margin: 4px 0;
+      border-radius: 10px;
+      padding: clamp(6px, 1.2vh, 10px) 10px;
     }
 
     .date-banner {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 11.5px;
+      font-size: clamp(10px, 1.25vw, 12.5px);
       font-weight: 700;
       color: var(--crimson);
       letter-spacing: 0.5px;
-      padding-bottom: 5px;
+      padding-bottom: 4px;
       border-bottom: 1px dashed rgba(184, 131, 31, 0.45);
       margin-bottom: 6px;
     }
@@ -237,33 +268,33 @@
     .schedule-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
+      gap: 6px;
       text-align: center;
     }
 
     .sched-item {
-      background: rgba(255, 253, 248, 0.82);
+      background: rgba(255, 253, 248, 0.85);
       border: 1px solid rgba(229, 184, 75, 0.5);
       border-radius: 8px;
-      padding: 5px 4px;
+      padding: 4px;
     }
 
     .sched-label {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 9.5px;
+      font-size: clamp(8px, 0.95vw, 9.5px);
       font-weight: 700;
       color: var(--crimson);
       text-transform: uppercase;
     }
 
     .sched-time {
-      font-size: 13.5px;
+      font-size: clamp(11.5px, 1.35vw, 14px);
       font-weight: 700;
       color: var(--ink);
     }
 
     .sched-note {
-      font-size: 10.5px;
+      font-size: clamp(9px, 1.05vw, 10.5px);
       font-style: italic;
       color: var(--gold-deep);
       font-weight: 600;
@@ -272,12 +303,11 @@
     /* Countdown Timer */
     .countdown-wrap {
       width: 100%;
-      margin: 2px 0;
     }
 
     .countdown-title {
-      font-size: 10px;
-      letter-spacing: 1.5px;
+      font-size: clamp(8.5px, 1vw, 10px);
+      letter-spacing: 1.2px;
       text-transform: uppercase;
       color: var(--gold-deep);
       font-weight: 700;
@@ -287,51 +317,55 @@
     .countdown-boxes {
       display: flex;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .cd-box {
-      min-width: 56px;
+      min-width: clamp(44px, 5.5vw, 58px);
       background: linear-gradient(180deg, var(--crimson) 0%, var(--crimson-dark) 100%);
       border: 1px solid var(--gold);
-      border-radius: 8px;
-      padding: 4px 6px;
+      border-radius: 7px;
+      padding: 3px 5px;
       color: var(--gold-light);
       box-shadow: 0 3px 8px rgba(66, 6, 18, 0.25);
     }
 
     .cd-num {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 14px;
+      font-size: clamp(12px, 1.5vw, 15px);
       font-weight: 700;
       line-height: 1.1;
     }
 
     .cd-lbl {
-      font-size: 8.5px;
+      font-size: clamp(7.5px, 0.85vw, 8.5px);
       text-transform: uppercase;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.6px;
       opacity: 0.9;
     }
 
-    /* Navigation Button */
+    /* Navigation & Closing Buttons */
     .nav-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
-      padding: 8px 20px;
+      padding: 6px 18px;
       border-radius: 999px;
       border: 1.5px solid var(--gold);
       background: linear-gradient(180deg, var(--crimson-light) 0%, var(--crimson-dark) 100%);
       color: var(--gold-light);
       font-family: 'Cinzel Decorative', serif;
-      font-size: 10.5px;
+      font-size: clamp(9px, 1.05vw, 10.5px);
       font-weight: 700;
-      letter-spacing: 1.1px;
+      letter-spacing: 1px;
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(66, 6, 18, 0.3);
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      box-shadow: 0 6px 16px rgba(66, 6, 18, 0.45);
     }
 
     .nav-btn:active {
@@ -341,20 +375,55 @@
     .nav-btn.secondary {
       background: transparent;
       color: var(--crimson);
-      border-color: rgba(184, 131, 31, 0.7);
+      border-color: rgba(184, 131, 31, 0.75);
       box-shadow: none;
-      padding: 6px 16px;
-      font-size: 9.5px;
+      padding: 5px 14px;
+      font-size: clamp(8.5px, 0.95vw, 9.5px);
     }
 
-    /* ================= PAGE 2 STYLES ================= */
+    .page2-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    /* ================= PAGE 2 WIDESCREEN STYLES ================= */
+    .p2-grid {
+      width: 100%;
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(14px, 2.4vw, 26px);
+      align-items: center;
+      margin: 4px 0;
+    }
+
+    .p2-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .p2-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(8px, 1.5vh, 14px);
+      border-left: 1px dashed rgba(184, 131, 31, 0.45);
+      padding-left: clamp(12px, 2vw, 22px);
+    }
+
     .venue-header {
-      margin-top: 2px;
+      margin-bottom: 4px;
     }
 
     .section-heading {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 13.5px;
+      font-size: clamp(10px, 1.2vw, 12.5px);
       font-weight: 700;
       color: var(--crimson);
       letter-spacing: 1.5px;
@@ -363,15 +432,15 @@
 
     .venue-name {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 16px;
+      font-size: clamp(14px, 1.8vw, 18px);
       font-weight: 900;
       color: var(--ink);
-      margin-top: 2px;
+      margin-top: 1px;
     }
 
     .venue-address {
-      font-size: 13px;
-      line-height: 1.3;
+      font-size: clamp(11px, 1.3vw, 13.5px);
+      line-height: 1.25;
       color: var(--ink-muted);
     }
 
@@ -379,14 +448,14 @@
     .map-card {
       display: block;
       width: 100%;
+      max-width: 380px;
       text-decoration: none;
       background: #fffdf8;
       border: 1.5px solid var(--gold);
-      border-radius: 14px;
+      border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 6px 18px rgba(66, 6, 18, 0.16);
       transition: transform 0.2s ease;
-      margin: 4px 0;
     }
 
     .map-card:active {
@@ -395,7 +464,7 @@
 
     .map-illustration {
       width: 100%;
-      height: 138px;
+      height: clamp(92px, 18vh, 132px);
       display: block;
       background: linear-gradient(180deg, #f9f1df 0%, #efe0c2 100%);
     }
@@ -404,26 +473,26 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      padding: 8px 12px;
+      gap: 6px;
+      padding: 6px 10px;
       background: linear-gradient(180deg, var(--crimson) 0%, var(--crimson-dark) 100%);
       color: var(--gold-light);
       font-family: 'Cinzel Decorative', serif;
-      font-size: 10.5px;
+      font-size: clamp(8.5px, 1vw, 10px);
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
     }
 
     /* Hosts & Gracious Presence */
     .presence-box {
-      padding: 6px 10px;
+      padding: 8px 10px;
       border-top: 1px solid rgba(184, 131, 31, 0.4);
       border-bottom: 1px solid rgba(184, 131, 31, 0.4);
       width: 100%;
     }
 
     .presence-quote {
-      font-size: 14px;
+      font-size: clamp(12px, 1.45vw, 15px);
       font-style: italic;
       font-weight: 600;
       color: var(--crimson);
@@ -431,11 +500,11 @@
     }
 
     .hosts-block {
-      margin-top: 2px;
+      width: 100%;
     }
 
     .invited-lbl {
-      font-size: 11px;
+      font-size: clamp(9.5px, 1.1vw, 11px);
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--gold-deep);
@@ -443,18 +512,18 @@
     }
 
     .host-names {
-      font-size: 14px;
+      font-size: clamp(12.5px, 1.5vw, 15.5px);
       font-weight: 700;
       line-height: 1.3;
       color: var(--ink);
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
     .compliments {
-      font-size: 11.5px;
+      font-size: clamp(10.5px, 1.2vw, 12px);
       font-style: italic;
       color: var(--ink-muted);
-      margin-top: 2px;
+      margin-top: 4px;
     }
 
     /* ================= SILK CURTAIN & PEARL COVER ================= */
@@ -466,13 +535,16 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.8s ease 0.75s, visibility 0.8s ease 0.75s;
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
     }
 
     .stage.opened .cover-overlay {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
+      transition-delay: 0.85s;
     }
 
     /* Left & Right Pleated Crimson Silk Curtains */
@@ -491,18 +563,20 @@
           #3b040f 48px
         );
       box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.65);
-      transition: transform 1.25s cubic-bezier(0.65, 0, 0.35, 1);
+      transition: transform 1.15s cubic-bezier(0.65, 0, 0.35, 1);
       z-index: 21;
     }
 
     .curtain.left {
       left: 0;
       border-right: 2px solid var(--gold);
+      transform: translateX(0%);
     }
 
     .curtain.right {
       right: 0;
       border-left: 2px solid var(--gold);
+      transform: translateX(0%);
     }
 
     .stage.opened .curtain.left {
@@ -519,9 +593,11 @@
       top: 0;
       left: 0;
       width: 100%;
+      height: clamp(46px, 11vh, 68px);
       z-index: 23;
       pointer-events: none;
-      transition: transform 1s ease;
+      transform: translateY(0%);
+      transition: transform 0.95s ease;
     }
 
     .stage.opened .pearl-toran {
@@ -532,37 +608,40 @@
     .cover-center {
       position: relative;
       z-index: 24;
-      width: 88%;
-      padding: 24px 16px;
-      border-radius: 20px;
-      background: radial-gradient(circle at center, rgba(66, 6, 18, 0.92) 0%, rgba(38, 3, 10, 0.96) 100%);
+      width: min(74%, 540px);
+      padding: clamp(14px, 3vh, 24px) 20px;
+      border-radius: 18px;
+      background: radial-gradient(circle at center, rgba(66, 6, 18, 0.94) 0%, rgba(38, 3, 10, 0.97) 100%);
       border: 1.5px solid var(--gold);
       box-shadow:
         0 0 0 4px rgba(66, 6, 18, 0.85),
         0 0 0 5.5px rgba(229, 184, 75, 0.6),
         0 18px 40px rgba(0, 0, 0, 0.75);
       text-align: center;
-      transition: transform 0.7s ease, opacity 0.6s ease;
+      transform: scale(1);
+      opacity: 1;
+      transition: transform 0.65s ease 0.25s, opacity 0.55s ease 0.25s;
     }
 
     .stage.opened .cover-center {
       transform: scale(0.9);
       opacity: 0;
+      transition-delay: 0s;
     }
 
     .cover-blessing {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 10px;
+      font-size: clamp(9px, 1.15vw, 11px);
       letter-spacing: 2.5px;
       color: var(--gold);
       text-transform: uppercase;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .cover-names {
       font-family: 'Great Vibes', cursive;
-      font-size: 40px;
-      line-height: 1.12;
+      font-size: clamp(32px, 4.6vw, 48px);
+      line-height: 1.08;
       background: linear-gradient(180deg, #fff6d1 0%, #e5b84b 55%, #b8831f 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -571,16 +650,17 @@
 
     .cover-amp {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 16px;
-      display: block;
-      margin: 2px 0;
+      font-size: clamp(13px, 1.7vw, 18px);
+      display: inline-block;
+      margin: 0 10px;
+      vertical-align: middle;
     }
 
     /* Silk Ribbon & Clasp */
     .silk-ribbon {
       position: relative;
-      margin: 18px -16px 6px;
-      height: 46px;
+      margin: clamp(10px, 2vh, 16px) -20px 6px;
+      height: clamp(36px, 6.5vh, 44px);
       background: linear-gradient(180deg, #8f142d 0%, #570818 50%, #3d0410 100%);
       border-top: 1.5px solid var(--gold);
       border-bottom: 1.5px solid var(--gold);
@@ -591,13 +671,13 @@
     }
 
     .open-clasp {
-      padding: 10px 26px;
+      padding: 8px 24px;
       border-radius: 999px;
       border: 2px solid #fff3c4;
       background: linear-gradient(180deg, #f6d57e 0%, #c89128 100%);
       color: #3b040f;
       font-family: 'Cinzel Decorative', serif;
-      font-size: 12px;
+      font-size: clamp(10px, 1.25vw, 12px);
       font-weight: 900;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -613,8 +693,8 @@
     }
 
     .tap-hint {
-      margin-top: 10px;
-      font-size: 11.5px;
+      margin-top: 8px;
+      font-size: clamp(10px, 1.2vw, 12px);
       font-style: italic;
       color: var(--gold-light);
       opacity: 0.85;
@@ -644,16 +724,13 @@
             <stop offset="100%" stop-color="#c9b289"/>
           </radialGradient>
         </defs>
-        <!-- Gold Zari Scallops -->
         <path d="M0,0 Q50,55 100,0 Q150,55 200,0 Q250,55 300,0 Q350,55 400,0" fill="none" stroke="#e5b84b" stroke-width="2.5"/>
         <path d="M0,0 Q50,38 100,0 Q150,38 200,0 Q250,38 300,0 Q350,38 400,0" fill="#420612" stroke="#b8831f" stroke-width="1.5"/>
-        <!-- Pearls along swags -->
         <g fill="url(#pearlGrad)">
           <circle cx="15" cy="14" r="3.2"/><circle cx="32" cy="23" r="3.5"/><circle cx="50" cy="27" r="4"/><circle cx="68" cy="23" r="3.5"/><circle cx="85" cy="14" r="3.2"/>
           <circle cx="115" cy="14" r="3.2"/><circle cx="132" cy="23" r="3.5"/><circle cx="150" cy="27" r="4"/><circle cx="168" cy="23" r="3.5"/><circle cx="185" cy="14" r="3.2"/>
           <circle cx="215" cy="14" r="3.2"/><circle cx="232" cy="23" r="3.5"/><circle cx="250" cy="27" r="4"/><circle cx="268" cy="23" r="3.5"/><circle cx="285" cy="14" r="3.2"/>
           <circle cx="315" cy="14" r="3.2"/><circle cx="332" cy="23" r="3.5"/><circle cx="350" cy="27" r="4"/><circle cx="368" cy="23" r="3.5"/><circle cx="385" cy="14" r="3.2"/>
-          <!-- Hanging Pearl Drops -->
           <circle cx="50" cy="36" r="2.8"/><circle cx="50" cy="44" r="3.6"/>
           <circle cx="150" cy="36" r="2.8"/><circle cx="150" cy="44" r="3.6"/>
           <circle cx="250" cy="36" r="2.8"/><circle cx="250" cy="44" r="3.6"/>
@@ -663,7 +740,7 @@
 
       <!-- Center Title & Silk Ribbon Clasp -->
       <div class="cover-center">
-        <div class="cover-blessing">Shubhamasthu • Wedding Invitation</div>
+        <div class="cover-blessing" id="coverStatus">Shubhamasthu • Wedding Invitation</div>
         <div class="cover-names">
           Hari Priya
           <span class="cover-amp">&amp;</span>
@@ -673,7 +750,7 @@
         <div class="silk-ribbon">
           <button type="button" class="open-clasp" id="openBtn">Open Invitation</button>
         </div>
-        <div class="tap-hint">Tap to part the curtains &amp; unfold</div>
+        <div class="tap-hint" id="coverHint">Tap to part the curtains &amp; unfold</div>
       </div>
     </div>
 
@@ -693,56 +770,62 @@
           <span>Kalyanamasthu</span>
         </div>
 
-        <div class="ganesha-wrap">
-          <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
-            <circle cx="32" cy="32" r="29" stroke="#b8831f" stroke-width="1.5" stroke-dasharray="3 2"/>
-            <path d="M32 13 C25 13 21 18 21 24 C21 28 24 31 28 32 C25 35 24 41 28 45 C31 48 37 47 38 43 C39 40 36 39 34 40 C32 41 31 39 32 36 C33 33 38 31 40 27 C42 22 39 13 32 13 Z" fill="#8f142d"/>
-            <path d="M25 11 L32 6 L39 11" stroke="#b8831f" stroke-width="2" fill="none"/>
-            <circle cx="32" cy="18" r="1.6" fill="#ffd97d"/>
-          </svg>
-          <div class="invite-title">Wedding Invitation</div>
-        </div>
-
-        <p class="solicit-text">
-          We solicit your gracious presence with family &amp; friends on the auspicious occasion of the marriage of our youngest daughter
-        </p>
-
-        <div class="couple-block">
-          <div class="prefix">Chi. La. Sou.</div>
-          <div class="couple-name">Hari Priya</div>
-          <div class="weds-badge">✦ WITH ✦</div>
-          <div class="prefix">Chi.</div>
-          <div class="couple-name">Ram Nived</div>
-          <div class="parents-sub">
-            (Only S/o Sri Uppala Murali Krishna &amp; Smt. Karuna Sri)
-          </div>
-        </div>
-
-        <!-- Event Timings -->
-        <div class="timings-card">
-          <div class="date-banner">Saturday, 12th December, 2026</div>
-          <div class="schedule-grid">
-            <div class="sched-item">
-              <div class="sched-label">Wedding Dinner</div>
-              <div class="sched-time">7:30 PM Onwards</div>
-              <div class="sched-note">Traditional Feast</div>
+        <div class="p1-grid">
+          <!-- Left Column: Couple & Invitation -->
+          <div class="p1-left">
+            <div class="ganesha-wrap">
+              <svg width="26" height="26" viewBox="0 0 64 64" fill="none">
+                <circle cx="32" cy="32" r="29" stroke="#b8831f" stroke-width="1.5" stroke-dasharray="3 2"/>
+                <path d="M32 13 C25 13 21 18 21 24 C21 28 24 31 28 32 C25 35 24 41 28 45 C31 48 37 47 38 43 C39 40 36 39 34 40 C32 41 31 39 32 36 C33 33 38 31 40 27 C42 22 39 13 32 13 Z" fill="#8f142d"/>
+                <path d="M25 11 L32 6 L39 11" stroke="#b8831f" stroke-width="2" fill="none"/>
+                <circle cx="32" cy="18" r="1.6" fill="#ffd97d"/>
+              </svg>
+              <div class="invite-title">Wedding Invitation</div>
             </div>
-            <div class="sched-item">
-              <div class="sched-label">Sumuhurtham</div>
-              <div class="sched-time">8:28 PM</div>
-              <div class="sched-note">“Karkataka Lagnam”</div>
+
+            <p class="solicit-text">
+              We solicit your gracious presence with family &amp; friends on the auspicious occasion of the marriage of our youngest daughter
+            </p>
+
+            <div class="couple-block">
+              <div class="prefix">Chi. La. Sou.</div>
+              <div class="couple-name">Hari Priya</div>
+              <div class="weds-badge">✦ WITH ✦</div>
+              <div class="prefix">Chi.</div>
+              <div class="couple-name">Ram Nived</div>
+              <div class="parents-sub">
+                (Only S/o Sri Uppala Murali Krishna &amp; Smt. Karuna Sri)
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Live Countdown -->
-        <div class="countdown-wrap">
-          <div class="countdown-title">Counting Down to the Auspicious Moment</div>
-          <div class="countdown-boxes">
-            <div class="cd-box"><div class="cd-num" id="cd-days">--</div><div class="cd-lbl">Days</div></div>
-            <div class="cd-box"><div class="cd-num" id="cd-hours">--</div><div class="cd-lbl">Hours</div></div>
-            <div class="cd-box"><div class="cd-num" id="cd-mins">--</div><div class="cd-lbl">Mins</div></div>
-            <div class="cd-box"><div class="cd-num" id="cd-secs">--</div><div class="cd-lbl">Secs</div></div>
+          <!-- Right Column: Event Timings & Countdown -->
+          <div class="p1-right">
+            <div class="timings-card">
+              <div class="date-banner">Saturday, 12th December, 2026</div>
+              <div class="schedule-grid">
+                <div class="sched-item">
+                  <div class="sched-label">Wedding Dinner</div>
+                  <div class="sched-time">7:30 PM Onwards</div>
+                  <div class="sched-note">Traditional Feast</div>
+                </div>
+                <div class="sched-item">
+                  <div class="sched-label">Sumuhurtham</div>
+                  <div class="sched-time">8:28 PM</div>
+                  <div class="sched-note">“Karkataka Lagnam”</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="countdown-wrap">
+              <div class="countdown-title">Counting Down to the Auspicious Moment</div>
+              <div class="countdown-boxes">
+                <div class="cd-box"><div class="cd-num" id="cd-days">--</div><div class="cd-lbl">Days</div></div>
+                <div class="cd-box"><div class="cd-num" id="cd-hours">--</div><div class="cd-lbl">Hours</div></div>
+                <div class="cd-box"><div class="cd-num" id="cd-mins">--</div><div class="cd-lbl">Mins</div></div>
+                <div class="cd-box"><div class="cd-num" id="cd-secs">--</div><div class="cd-lbl">Secs</div></div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -751,73 +834,80 @@
         </button>
       </section>
 
-      <!-- PAGE 2: VENUE, INTERACTIVE ROUTE MAP & HOSTS -->
+      <!-- PAGE 2: VENUE, INTERACTIVE ROUTE MAP, HOSTS & CLOSING -->
       <section class="page page-2" id="page2">
-        <button type="button" class="nav-btn secondary" id="prevPageBtn">
-          ↑ Back to Invitation
-        </button>
+        <div class="p2-grid">
+          <!-- Left Column: Venue & Route Map -->
+          <div class="p2-left">
+            <div class="venue-header">
+              <div class="section-heading">Wedding Venue</div>
+              <div class="venue-name">Mehdi Manzil</div>
+              <div class="venue-address">
+                Road No. 12, Incometax Colony, Banjara Hills, Hyderabad - 500034
+              </div>
+            </div>
 
-        <div class="venue-header">
-          <div class="section-heading">Wedding Venue</div>
-          <div class="venue-name">Mehdi Manzil</div>
-          <div class="venue-address">
-            Road No. 12, Incometax Colony,<br/>
-            Banjara Hills, Hyderabad - 500034
+            <a
+              class="map-card"
+              href="https://maps.app.goo.gl/grWHUECqZRxVvGzd6"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Mehdi Manzil location in Google Maps"
+            >
+              <svg class="map-illustration" viewBox="0 0 360 150" preserveAspectRatio="xMidYMid slice">
+                <path d="M-10,35 L370,25 M-10,115 L370,125 M95,-10 L85,160 M265,-10 L275,160" stroke="#e2cfa8" stroke-width="6" fill="none"/>
+                <path d="M-10,35 L370,25 M-10,115 L370,125 M95,-10 L85,160 M265,-10 L275,160" stroke="#fffaf0" stroke-width="2.5" fill="none"/>
+                <path d="M58,108 C115,108 135,52 195,62 C235,68 255,48 296,46" stroke="#b8831f" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.35"/>
+                <path d="M58,108 C115,108 135,52 195,62 C235,68 255,48 296,46" stroke="#8f142d" stroke-width="3" stroke-dasharray="7 5" stroke-linecap="round" fill="none"/>
+
+                <g transform="translate(58, 108)">
+                  <circle cx="0" cy="0" r="14" fill="#fffdf8" stroke="#b8831f" stroke-width="2"/>
+                  <path d="M-6,1 L0,-5 L6,1 L4,1 L4,6 L-4,6 L-4,1 Z" fill="#6b0c1f"/>
+                  <rect x="-26" y="17" width="52" height="16" rx="8" fill="#420612"/>
+                  <text x="0" y="28" text-anchor="middle" fill="#fff3c4" font-size="8.5" font-family="sans-serif" font-weight="bold">Your Home</text>
+                </g>
+
+                <g transform="translate(296, 46)">
+                  <circle cx="0" cy="0" r="20" fill="#8f142d" opacity="0.18"/>
+                  <path d="M0,-22 C-9,-22 -16,-15 -16,-6 C-16,6 0,18 0,18 C0,18 16,6 16,-6 C16,-15 9,-22 0,-22 Z" fill="#8f142d" stroke="#ffd97d" stroke-width="2"/>
+                  <circle cx="0" cy="-7" r="5" fill="#fff3c4"/>
+                  <rect x="-44" y="21" width="88" height="18" rx="9" fill="#420612" stroke="#e5b84b" stroke-width="1"/>
+                  <text x="0" y="33" text-anchor="middle" fill="#fff3c4" font-size="9" font-family="sans-serif" font-weight="bold">Mehdi Manzil</text>
+                </g>
+              </svg>
+              <div class="map-cta">
+                <span>📍 Tap Map for Google Maps Directions</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Right Column: Blessings Quote & Hosts -->
+          <div class="p2-right">
+            <div class="presence-box">
+              <div class="presence-quote">
+                “Your gracious presence and blessings are warmly awaited to make this occasion truly memorable.”
+              </div>
+            </div>
+
+            <div class="hosts-block">
+              <div class="invited-lbl">Invited By</div>
+              <div class="host-names">
+                Sri Pemmaraju Venkata Varaha Kesava Srinivas<br/>
+                Smt. Pemmaraju Uma Bala
+              </div>
+              <div class="compliments">With best compliments from: Near &amp; Dear</div>
+            </div>
           </div>
         </div>
 
-        <!-- Interactive Route Map Linked to Google Maps Pin -->
-        <a
-          class="map-card"
-          href="https://maps.app.goo.gl/grWHUECqZRxVvGzd6"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open Mehdi Manzil location in Google Maps"
-        >
-          <svg class="map-illustration" viewBox="0 0 360 150" preserveAspectRatio="xMidYMid slice">
-            <!-- Decorative Map Grid & Roads -->
-            <path d="M-10,35 L370,25 M-10,115 L370,125 M95,-10 L85,160 M265,-10 L275,160" stroke="#e2cfa8" stroke-width="6" fill="none"/>
-            <path d="M-10,35 L370,25 M-10,115 L370,125 M95,-10 L85,160 M265,-10 L275,160" stroke="#fffaf0" stroke-width="2.5" fill="none"/>
-
-            <!-- Highlighted Golden Route Curve -->
-            <path d="M58,108 C115,108 135,52 195,62 C235,68 255,48 296,46" stroke="#b8831f" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.35"/>
-            <path d="M58,108 C115,108 135,52 195,62 C235,68 255,48 296,46" stroke="#8f142d" stroke-width="3" stroke-dasharray="7 5" stroke-linecap="round" fill="none"/>
-
-            <!-- Start Pin: Your Home -->
-            <g transform="translate(58, 108)">
-              <circle cx="0" cy="0" r="14" fill="#fffdf8" stroke="#b8831f" stroke-width="2"/>
-              <path d="M-6,1 L0,-5 L6,1 L4,1 L4,6 L-4,6 L-4,1 Z" fill="#6b0c1f"/>
-              <rect x="-26" y="17" width="52" height="16" rx="8" fill="#420612"/>
-              <text x="0" y="28" text-anchor="middle" fill="#fff3c4" font-size="8.5" font-family="sans-serif" font-weight="bold">Your Home</text>
-            </g>
-
-            <!-- Destination Pin: Mehdi Manzil -->
-            <g transform="translate(296, 46)">
-              <circle cx="0" cy="0" r="20" fill="#8f142d" opacity="0.18"/>
-              <path d="M0,-22 C-9,-22 -16,-15 -16,-6 C-16,6 0,18 0,18 C0,18 16,6 16,-6 C16,-15 9,-22 0,-22 Z" fill="#8f142d" stroke="#ffd97d" stroke-width="2"/>
-              <circle cx="0" cy="-7" r="5" fill="#fff3c4"/>
-              <rect x="-44" y="21" width="88" height="18" rx="9" fill="#420612" stroke="#e5b84b" stroke-width="1"/>
-              <text x="0" y="33" text-anchor="middle" fill="#fff3c4" font-size="9" font-family="sans-serif" font-weight="bold">Mehdi Manzil</text>
-            </g>
-          </svg>
-          <div class="map-cta">
-            <span>📍 Tap Map for Google Maps Directions</span>
-          </div>
-        </a>
-
-        <div class="presence-box">
-          <div class="presence-quote">
-            “Your gracious presence and blessings are warmly awaited to make this occasion truly memorable.”
-          </div>
-        </div>
-
-        <div class="hosts-block">
-          <div class="invited-lbl">Invited By</div>
-          <div class="host-names">
-            Sri Pemmaraju Venkata Varaha Kesava Srinivas<br/>
-            Smt. Pemmaraju Uma Bala
-          </div>
-          <div class="compliments">With best compliments from: Near &amp; Dear</div>
+        <!-- Navigation & Closing Controls -->
+        <div class="page2-actions">
+          <button type="button" class="nav-btn secondary" id="prevPageBtn">
+            ↑ Back to Page 1
+          </button>
+          <button type="button" class="nav-btn" id="closeInviteBtn">
+            Close Invitation ✦
+          </button>
         </div>
       </section>
     </div>
@@ -828,12 +918,28 @@
       var stage = document.getElementById('stage');
       var openBtn = document.getElementById('openBtn');
       var coverOverlay = document.getElementById('coverOverlay');
+      var coverStatus = document.getElementById('coverStatus');
+      var coverHint = document.getElementById('coverHint');
       var booklet = document.getElementById('booklet');
       var nextPageBtn = document.getElementById('nextPageBtn');
       var prevPageBtn = document.getElementById('prevPageBtn');
+      var closeInviteBtn = document.getElementById('closeInviteBtn');
 
       function openEnvelope() {
         stage.classList.add('opened');
+      }
+
+      function closeEnvelope() {
+        // Draw the crimson silk curtains & pearl toran shut
+        stage.classList.remove('opened');
+        coverStatus.textContent = 'With Warm Regards • Save the Date';
+        openBtn.textContent = 'Reopen Invitation';
+        coverHint.textContent = 'Thank you • Tap anytime to view again';
+
+        // Reset back to Page 1 after curtains finish closing
+        setTimeout(function () {
+          booklet.classList.remove('show-page-2');
+        }, 900);
       }
 
       if (openBtn) {
@@ -859,7 +965,13 @@
         });
       }
 
-      // Touch swipe support between Page 1 and Page 2
+      if (closeInviteBtn) {
+        closeInviteBtn.addEventListener('click', function () {
+          closeEnvelope();
+        });
+      }
+
+      // Touch swipe support between Page 1, Page 2, and Closing
       var touchStartY = 0;
       booklet.addEventListener('touchstart', function (e) {
         if (e.touches && e.touches.length > 0) {
@@ -871,7 +983,11 @@
         if (!e.changedTouches || e.changedTouches.length === 0) return;
         var deltaY = touchStartY - e.changedTouches[0].clientY;
         if (deltaY > 45) {
-          booklet.classList.add('show-page-2');
+          if (!booklet.classList.contains('show-page-2')) {
+            booklet.classList.add('show-page-2');
+          } else {
+            closeEnvelope();
+          }
         } else if (deltaY < -45) {
           booklet.classList.remove('show-page-2');
         }
